@@ -12,9 +12,6 @@ export const AddressPrettify = ({address, tileWidth = '100%', tileHeight = '5px'
 
     return (
         <div style={{display: 'flex', maxWidth: 'fit-content', flexDirection: 'column'}}>
-            <div>
-                {address}
-            </div>
             <div style={{display: 'flex'}}>
                 {addressToColourArray.map(element => {
                     const tile = {
