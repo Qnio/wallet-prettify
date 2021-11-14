@@ -19,8 +19,8 @@ export const AddressPrettify = ({address, tileWidth = '100%', tileHeight = '5px'
                         backgroundColor: `#${element}`,
                         width: `${tileWidth}`,
                         height: `${tileHeight}`,
-                        borderRadius: '2px',
-                        margin: '0 1px'
+                        margin: '0 1px',
+                        boxShadow: `0px 3px 2px -2px #${element}`
                     }
                     return <div key={Math.random().toString()} style={tile}>&nbsp;</div>
                 })}
