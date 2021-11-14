@@ -11,13 +11,16 @@ export const AddressPrettify = ({address, tileWidth = '100%', tileHeight = '5px'
     const addressToColourArray = changeLeadingTwoSigns.split(/(?<=^(?:.{6})+)(?!$)/);
 
     return (
-        <div style={{display: 'flex', maxWidth: 'fit-content', flexDirection: 'column'}}>
+        <div style={{display: 'flex', maxWidth: 'fit-content', minWidth: 'fit-content', flexDirection: 'column'}}>
+            <div>{address}</div>
             <div style={{display: 'flex'}}>
                 {addressToColourArray.map(element => {
                     const tile = {
                         backgroundColor: `#${element}`,
                         width: `${tileWidth}`,
-                        height: `${tileHeight}`
+                        height: `${tileHeight}`,
+                        borderRadius: '2px',
+                        margin: '0 1px'
                     }
                     return <div key={Math.random().toString()} style={tile}>&nbsp;</div>
                 })}
