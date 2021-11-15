@@ -3,7 +3,7 @@
 Small package that include some logic to prettify cryptocurrency wallets addresses.
 This feature will allow differentiating bulk of wallet addresses to visualise more clearly if the address is in repetition.
 
-Working only for ETH at the moment
+Works only for ETH addresses at the moment
 
 Work in progress:  BTC addresses
 
