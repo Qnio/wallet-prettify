@@ -83,7 +83,7 @@ export const AddressPrettify = ({
 
 
     const tileParams = {
-        filter: `${!addressToRgb.length ? 'brightness(1) saturate(2.5)' : 'brightness(1.6) saturate(3.5)'}`,
+        filter: `${!addressToRgb.length ? 'brightness(1.2) saturate(2.5)' : 'brightness(2) saturate(4)'}`,
         width: `${tileWidth}`,
         height: `${tileHeight}`,
         marginTop: `${space}`,
