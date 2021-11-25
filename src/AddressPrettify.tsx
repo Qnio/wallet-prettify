@@ -6,7 +6,7 @@ export interface WalletAddress {
     tileHeight?: string,
     space?: string,
     gap?: string,
-    displayBg?: string
+    barBgColor?: string
 }
 
 export const AddressPrettify = ({
@@ -15,7 +15,7 @@ export const AddressPrettify = ({
                                     tileHeight = '3px',
                                     space = '0px',
                                     gap = '2px',
-                                    displayBg = 'black'
+                                    barBgColor = 'black'
                                 }: WalletAddress) => {
 
     let addressToRgb: any[] = [];
@@ -72,7 +72,7 @@ export const AddressPrettify = ({
 
 
     const tileParams = {
-        filter: `brightness(1.6) saturate(3)`,
+        filter: `brightness(1.6) saturate(3.5)`,
         width: `${tileWidth}`,
         height: `${tileHeight}`,
         marginTop: `${space}`,
@@ -86,7 +86,7 @@ export const AddressPrettify = ({
             <div>{address}</div>
             <div style={{
                 display: 'flex',
-                backgroundColor: `${displayBg}`,
+                backgroundColor: `${barBgColor}`,
                 borderRadius: '5px',
                 padding: '2px 1px'
             }}>
