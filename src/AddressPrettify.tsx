@@ -19,6 +19,7 @@ export const AddressPrettify = ({
                                 }: WalletAddress) => {
 
     let addressToRgb: any[] = [];
+    let addressToHex: any[] = [];
 
     const getColorsFromAddress = (param: number) => {
         addressToRgb = [];
@@ -35,23 +36,30 @@ export const AddressPrettify = ({
         }
     }
 
+    const addressToColorHex = () => {
+        const changeLeadingTwoSigns = address.replace(/^.{2}/g, '00');
+        addressToHex = changeLeadingTwoSigns.split(/(?<=^(?:.{6})+)(?!$)/);
+
+    }
+
     if (address.slice(0, 4) === 'xpub' ||
         address.slice(0, 4) === 'xprv' ||
         address.slice(0, 4) === 'tpub' ||
         address.slice(0, 4) === 'tprv') {
 
         getColorsFromAddress(4)
+        console.log(address.slice(0, 4), addressToRgb)
 
     } else if (
         address.slice(0, 3) === 'bc1' ||
         address.slice(0, 3) === 'tb1') {
 
         getColorsFromAddress(3)
-
+        console.log(addressToRgb)
     } else if (
         address.slice(0, 2) === '0x') {
-
-        getColorsFromAddress(2)
+        addressToColorHex();
+        console.log(addressToRgb)
 
     } else if (address.slice(0, 1) === '1' ||
         address.slice(0, 1) === '3' ||
@@ -63,8 +71,11 @@ export const AddressPrettify = ({
         address.slice(0, 1) === '9' ||
         address.slice(0, 1) === 'c' ||
         address.slice(0, 1) === 'm' ||
-        address.slice(0, 1) === 'n') {
+        address.slice(0, 1) === 'n')
+    {
+
         getColorsFromAddress(1);
+        console.log(addressToRgb)
 
     } else {
         getColorsFromAddress(0);
@@ -72,7 +83,7 @@ export const AddressPrettify = ({
 
 
     const tileParams = {
-        filter: `brightness(1.6) saturate(3.5)`,
+        filter: `${!addressToRgb.length ? 'brightness(1) saturate(2.5)' : 'brightness(1.6) saturate(3.5)'}`,
         width: `${tileWidth}`,
         height: `${tileHeight}`,
         marginTop: `${space}`,
@@ -95,6 +106,12 @@ export const AddressPrettify = ({
                         backgroundColor: `rgb(${element[0]}, 
                                               ${element[1] ? element[1] : element[0]}, 
                                               ${element[2] ? element[2] : element[1] ? element[1] : element[0]})`
+                    }
+                    return <div key={Math.random().toString()} style={{...tile, ...tileParams}}>&nbsp;</div>
+                })}
+                {addressToHex.map(element => {
+                    const tile = {
+                        backgroundColor: `#${element}`
                     }
                     return <div key={Math.random().toString()} style={{...tile, ...tileParams}}>&nbsp;</div>
                 })}
